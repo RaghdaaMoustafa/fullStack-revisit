@@ -29,7 +29,9 @@ let notes = [
 app.get('/api/notes', (req, res) => {
   res.json(notes)
 })
-
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "dist", "index.html"));
+});
 app.get('/api/notes/:id', (req, res) => {
   const id = req.params.id
   const note = notes.find((note) => note.id === id)
